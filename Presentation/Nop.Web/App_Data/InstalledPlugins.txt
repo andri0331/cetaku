@@ -1,0 +1,8 @@
+Misc.FacebookShop
+Payments.Manual
+Shipping.FixedRate
+Widgets.NivoSlider
+ExternalAuth.Facebook
+Shipping.ByWeight
+Payments.CheckMoneyOrder
+Payments.CashOnDelivery

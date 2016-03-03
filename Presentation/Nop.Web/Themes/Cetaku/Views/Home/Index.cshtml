@@ -1,0 +1,56 @@
+﻿@using Nop.Core
+@using Nop.Core.Infrastructure
+@using Nop.Services.Localization
+@using Nop.Web.Framework.Themes
+@{
+    Layout = "~/Views/Shared/_ColumnsOne.cshtml";
+}
+@{
+    //logo path
+    var currentThemeName = EngineContext.Current.Resolve<IThemeContext>().WorkingThemeName;
+    var featuredInPath = "~/Themes/" + currentThemeName + "/Content/images/FeaturedIn.png";
+    var ourcustomerPath = "~/Themes/" + currentThemeName + "/Content/images/OurCustomer.png";
+    var presentedatPath = "~/Themes/" + currentThemeName + "/Content/images/PresentedAt.png";
+
+    //store name
+    var storeName = EngineContext.Current.Resolve<IStoreContext>().CurrentStore.GetLocalized(x => x.Name);
+}
+<div class="page home-page">
+    <div class="page-body">
+        @Html.Widget("home_page_top")
+        @Html.Action("TopicBlock", "Topic", new { systemName = "HomePageText" })
+        @Html.Widget("home_page_before_categories")
+        @Html.Action("HomepageCategories", "Catalog")
+        @Html.Widget("home_page_before_products")
+        @Html.Action("HomepageProducts", "Product")
+        @Html.Widget("home_page_before_best_sellers")
+        @Html.Action("HomepageBestSellers", "Product")
+
+        
+        <div class="container">
+            <div class="span12 margin_left_0 press-by press-marg-top">
+                <div class="span4 margin_left_0">
+                    <h3 class="textcenter"><strong>Presented At</strong></h3>
+                    <p></p>
+                    <p class="textcenter"><img src="@Url.Content(presentedatPath)" alt="Presented At"></p>
+                </div>
+                <div class="span4">
+                    <h3 class="textcenter"><strong>Our customers</strong></h3>
+                    <p></p>
+                    <p class="textcenter"><img src="@Url.Content(ourcustomerPath)" alt="Our customers"></p>
+                </div>
+                <div class="span4">
+                    <h3 class="textcenter"><strong>Featured in</strong></h3>
+                    <p></p>
+                    <p class="textcenter"><img src="@Url.Content(featuredInPath)" alt="Featured in"></p>
+                </div>
+            </div>
+        </div>
+        
+        @Html.Widget("home_page_before_news")
+        @Html.Action("HomePageNews", "News")
+        @Html.Widget("home_page_before_poll")
+        @Html.Action("HomePagePolls", "Poll")
+        @Html.Widget("home_page_bottom")
+    </div>
+</div>
